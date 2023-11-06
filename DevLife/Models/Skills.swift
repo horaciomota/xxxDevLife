@@ -8,23 +8,22 @@
 import Foundation
 
 struct SkillsData: Codable {
-    let Skills: Skills
+    let skills: [Category]
+
+    enum CodingKeys: String, CodingKey {
+        case skills = "Skills"
+    }
 }
 
-struct Skills: Codable {
-    let Languages: SkillCategory
-    let SoftSkills: SkillCategory
-}
-
-struct SkillCategory: Codable, Identifiable {
-    let id = UUID()
+struct Category: Codable {
+    let categoryName: String
     let description: String
-    let options: [SkillOption]
+    let items: [SkillItem]
 }
 
-struct SkillOption: Codable, Identifiable {
-    let id: Int
+struct SkillItem: Codable, Identifiable {
+    let id = UUID()
     let name: String
-    let consequences: [String: Int]
+    let description: String
 }
 
