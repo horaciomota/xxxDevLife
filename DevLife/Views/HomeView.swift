@@ -3,7 +3,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var sharedData: SharedDataModel
     @StateObject private var eventsViewModel = EventsViewModel()
-    @ObservedObject private var attributesViewModel = AttributesViewModel()
+    @EnvironmentObject var attributesViewModel: AttributesViewModel
     @StateObject private var homeViewModel = HomeViewModel()
 
     var body: some View {
@@ -61,7 +61,8 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-            .environmentObject(SharedDataModel())
+            .environmentObject(AttributesViewModel()) // Garante que o AttributesViewModel esteja disponível
+            .environmentObject(SharedDataModel()) // Garante que o SharedDataModel esteja disponível
     }
 }
 

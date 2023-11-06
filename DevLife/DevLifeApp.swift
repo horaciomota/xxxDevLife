@@ -25,6 +25,7 @@ struct DevLifeApp: App {
     WindowGroup {
       NavigationView {
           TabBarView()
+              .environmentObject(AttributesViewModel())
       }
     }
   }

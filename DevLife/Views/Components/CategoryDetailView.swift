@@ -1,10 +1,11 @@
 import SwiftUI
 
+// CategoryDetailView.swift
 struct CategoryDetailView: View {
     var category: Category
-    @ObservedObject var attributesViewModel: AttributesViewModel
+    @EnvironmentObject var attributesViewModel: AttributesViewModel
     @EnvironmentObject var sharedData: SharedDataModel
-    @Environment(\.presentationMode) var presentationMode // Adiciona o presentationMode
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         List(category.items) { item in
@@ -16,7 +17,7 @@ struct CategoryDetailView: View {
                 sharedData.selectedItems.append(item)
 
                 // Fecha a CategoryDetailView e volta para a HomeView
-                self.presentationMode.wrappedValue.dismiss() // Chama o dismiss aqui
+                presentationMode.wrappedValue.dismiss()
             }) {
                 VStack(alignment: .leading) {
                     Text(item.name).font(.headline)
@@ -28,10 +29,15 @@ struct CategoryDetailView: View {
     }
 }
 
-// Não esqueça de adicionar o EnvironmentObject ao seu PreviewProvider se necessário
 struct CategoryDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryDetailView(category: Category(categoryName: "Example", description: "Example Description", items: []), attributesViewModel: AttributesViewModel())
-            .environmentObject(SharedDataModel())
+        let exampleCategory = Category(categoryName: "Example", description: "Example Description", items: [
+            SkillItem(name: "Skill 1", description: "Description 1", attributes: [AttributeEffect(name: "joy", value: 1)]),
+            // Adicione mais SkillItems se necessário
+        ])
+
+        CategoryDetailView(category: exampleCategory)
+            .environmentObject(AttributesViewModel()) // Aqui está como você passa um EnvironmentObject
+            .environmentObject(SharedDataModel()) // Se SharedDataModel também é necessário
     }
 }
