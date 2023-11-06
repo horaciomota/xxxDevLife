@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  DevLife
 //
 //  Created by Horacio Mota on 06/11/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     @StateObject private var viewModel = EventsViewModel()
 
     var body: some View {
@@ -22,5 +22,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    HomeView()
 }
