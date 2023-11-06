@@ -9,18 +9,19 @@ import SwiftUI
 
 struct SkillsView: View {
     @StateObject private var viewModel = SkillsViewModel()
-    
+    @ObservedObject private var attributesViewModel = AttributesViewModel()
+
     var body: some View {
         NavigationView {
-            List {
-                if let skills = viewModel.skillsData?.Skills {
-                    ForEach(skills) { category in
-                        NavigationLink(destination: CategoryDetailView(category: category)) {
-                            Text(category.categoryName)
-                        }
-                    }
-                }
-            }
+                   List {
+                       if let skills = viewModel.skillsData?.Skills {
+                           ForEach(skills) { category in
+                               NavigationLink(destination: CategoryDetailView(category: category, attributesViewModel: attributesViewModel)) {
+                                   Text(category.categoryName)
+                               }
+                           }
+                       }
+                   }
             .onAppear {
                 Task {
                     do {

@@ -8,19 +8,25 @@
 import SwiftUI
 
 struct CategoryDetailView: View {
-    var category: Category
+    let category: Category
+    var attributesViewModel: AttributesViewModel
 
     var body: some View {
         List {
             Text(category.description)
             ForEach(category.items) { item in
-                VStack(alignment: .leading) {
-                    Text(item.name).font(.headline)
-                    Text(item.description).font(.subheadline)
+                Button(action: {
+                    attributesViewModel.applySkillAttributes(item.attributes)
+                }) {
+                    VStack(alignment: .leading) {
+                        Text(item.name).font(.headline)
+                        Text(item.description).font(.subheadline)
+                    }
                 }
             }
         }
         .navigationTitle(category.categoryName)
     }
 }
+
 

@@ -29,4 +29,22 @@ class AttributesViewModel: ObservableObject {
             }
         }
     }
-}
+
+    func applySkillAttributes(_ attributes: [AttributeEffect]) {
+          for attribute in attributes {
+              switch attribute.name {
+              case "joy":
+                  joy += attribute.value
+              case "motivation":
+                  motivation += attribute.value
+              case "health":
+                  health += attribute.value
+              case "career":
+                  career += attribute.value
+              default:
+                  break
+              }
+          }
+      }
+  }
+
