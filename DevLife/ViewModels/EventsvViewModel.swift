@@ -15,7 +15,7 @@ enum EventsError: Error {
 }
 
 class EventsViewModel: ObservableObject {
-    @Published var events: [Event] = []
+    @Published var events: [Event] = [] // Array cos os eventos do Json
     @Published var errorMessage: String? // Logica de tratamento de erros separada da view
 
     // Função assíncrona para buscar os dados do JSON

@@ -26,6 +26,7 @@ struct HomeView: View {
                     .foregroundColor(.red)
                     .padding()
             }
+            
             // Inclui component de estatistica
             AttributesView(attributes: attributes)
 
