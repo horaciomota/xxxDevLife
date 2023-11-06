@@ -61,6 +61,7 @@
 		3D0FBFAB2AF9508A00F46DAC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3D0FBFAD2AF9536100F46DAC /* AttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributesView.swift; sourceTree = "<group>"; };
 		3D0FBFAF2AF9611500F46DAC /* AttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributesViewModel.swift; sourceTree = "<group>"; };
+		3D0FBFB32AF9673100F46DAC /* SkillsEvents.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SkillsEvents.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +161,7 @@
 			children = (
 				3D0FBF9F2AF94BC500F46DAC /* GoogleService-Info.plist */,
 				3D0FBF912AF948AB00F46DAC /* FixedEvents.json */,
+				3D0FBFB32AF9673100F46DAC /* SkillsEvents.json */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";

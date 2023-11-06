@@ -1,0 +1,51 @@
+{
+  "Skills": {
+    "Languages": {
+      "description": "Select a programming language to learn and enhance your coding expertise.",
+      "options": [
+        {
+          "id": 1,
+          "name": "Swift",
+          "consequences": {
+            "joy": 2,
+            "motivation": 1,
+            "career": 3
+          }
+        },
+        {
+          "id": 2,
+          "name": "JavaScript",
+          "consequences": {
+            "joy": 1,
+            "motivation": 2,
+            "career": 2
+          }
+        }
+      ]
+    },
+    "SoftSkills": {
+      "description": "Develop your interpersonal skills to effectively collaborate and communicate within a team.",
+      "options": [
+        {
+          "id": 1,
+          "name": "Communication",
+          "consequences": {
+            "joy": 1,
+            "motivation": 1,
+            "career": 2
+          }
+        },
+        {
+          "id": 2,
+          "name": "Problem Solving",
+          "consequences": {
+            "joy": 1,
+            "motivation": 3,
+            "career": 4
+          }
+        }
+      ]
+    }
+  }
+}
+
