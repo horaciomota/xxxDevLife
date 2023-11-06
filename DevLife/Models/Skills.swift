@@ -25,6 +25,12 @@ struct SkillItem: Codable, Identifiable {
     var id: String { name }
     let name: String
     let description: String
+    let attributes: [AttributeEffect]
+}
+
+struct AttributeEffect: Codable {
+    let name: String
+    let value: Int
 }
 
 

@@ -6,15 +6,27 @@
       "items": [
         {
           "name": "Swift",
-          "description": "A powerful language for iOS and macOS apps."
+          "description": "A powerful language for iOS and macOS apps.",
+          "attributes": [
+            { "name": "motivation", "value": 2 },
+            { "name": "career", "value": 3 }
+          ]
         },
         {
           "name": "Python",
-          "description": "A versatile language that is easy to learn and has a wide range of applications."
+          "description": "A versatile language that is easy to learn and has a wide range of applications.",
+          "attributes": [
+            { "name": "motivation", "value": 2 },
+            { "name": "career", "value": 3 }
+          ]
         },
         {
           "name": "JavaScript",
-          "description": "The language of the web, essential for any front-end development."
+          "description": "The language of the web, essential for any front-end development.",
+          "attributes": [
+            { "name": "motivation", "value": 2 },
+            { "name": "career", "value": 3 }
+          ]
         }
       ]
     },
@@ -24,15 +36,27 @@
       "items": [
         {
           "name": "Communication",
-          "description": "Expressing your ideas clearly and effectively."
+          "description": "Expressing your ideas clearly and effectively.",
+          "attributes": [
+            { "name": "motivation", "value": 2 },
+            { "name": "career", "value": 3 }
+          ]
         },
         {
           "name": "Problem-Solving",
-          "description": "The ability to find solutions to challenging issues."
+          "description": "The ability to find solutions to challenging issues.",
+          "attributes": [
+            { "name": "motivation", "value": 2 },
+            { "name": "career", "value": 3 }
+          ]
         },
         {
           "name": "Teamwork",
-          "description": "Working well with others to achieve a common goal."
+          "description": "Working well with others to achieve a common goal.",
+          "attributes": [
+            { "name": "motivation", "value": 2 },
+            { "name": "career", "value": 3 }
+          ]
         }
       ]
     }
