@@ -7,6 +7,10 @@
 
 import Foundation
 
+class SharedDataModel: ObservableObject {
+    @Published var selectedItems: [SkillItem] = []
+}
+
 // Define the top-level structure that matches the JSON structure.
 struct SkillsData: Codable {
     let Skills: [Category]
