@@ -11,37 +11,33 @@ struct SkillsView: View {
     @StateObject private var viewModel = SkillsViewModel()
 
     var body: some View {
-        VStack {
-            if let skillsData = viewModel.skillsData {
-                List {
-                    SkillCategoryView(category: skillsData.Skills.Languages)
-                    SkillCategoryView(category: skillsData.Skills.SoftSkills)
+        List {
+            if let skills = viewModel.skillsData?.Skills {
+                ForEach(skills) { category in
+                    Section(header: Text(category.categoryName)) {
+                        Text(category.description)
+                        ForEach(category.items) { item in
+                            VStack(alignment: .leading) {
+                                Text(item.name).font(.headline)
+                                Text(item.description).font(.subheadline)
+                            }
+                        }
+                    }
                 }
-            } else if let errorMessage = viewModel.errorMessage {
-                Text("Error: \(errorMessage)")
-            } else {
-                Text("Loading...")
             }
         }
         .onAppear {
             Task {
-                await viewModel.fetchSkillsJson()
+                do {
+                    try await viewModel.fetchSkillsJson()
+                } catch {
+                    print("Error fetching skills: \(error)")
+                }
             }
         }
     }
 }
 
-struct SkillCategoryView: View {
-    let category: SkillCategory
-
-    var body: some View {
-        Section(header: Text(category.description)) {
-            ForEach(category.options) { option in
-                Text(option.name)
-            }
-        }
-    }
-}
 
 
 #Preview {

@@ -1,51 +1,40 @@
 {
-  "Skills": {
-    "Languages": {
-      "description": "Select a programming language to learn and enhance your coding expertise.",
-      "options": [
+  "Skills": [
+    {
+      "categoryName": "Programming Languages",
+      "description": "These are the programming languages you can learn.",
+      "items": [
         {
-          "id": 1,
           "name": "Swift",
-          "consequences": {
-            "joy": 2,
-            "motivation": 1,
-            "career": 3
-          }
+          "description": "A powerful language for iOS and macOS apps."
         },
         {
-          "id": 2,
+          "name": "Python",
+          "description": "A versatile language that is easy to learn and has a wide range of applications."
+        },
+        {
           "name": "JavaScript",
-          "consequences": {
-            "joy": 1,
-            "motivation": 2,
-            "career": 2
-          }
+          "description": "The language of the web, essential for any front-end development."
         }
       ]
     },
-    "SoftSkills": {
-      "description": "Develop your interpersonal skills to effectively collaborate and communicate within a team.",
-      "options": [
+    {
+      "categoryName": "Soft Skills",
+      "description": "Soft skills that are valuable for any developer.",
+      "items": [
         {
-          "id": 1,
           "name": "Communication",
-          "consequences": {
-            "joy": 1,
-            "motivation": 1,
-            "career": 2
-          }
+          "description": "Expressing your ideas clearly and effectively."
         },
         {
-          "id": 2,
-          "name": "Problem Solving",
-          "consequences": {
-            "joy": 1,
-            "motivation": 3,
-            "career": 4
-          }
+          "name": "Problem-Solving",
+          "description": "The ability to find solutions to challenging issues."
+        },
+        {
+          "name": "Teamwork",
+          "description": "Working well with others to achieve a common goal."
         }
       ]
     }
-  }
+  ]
 }
-

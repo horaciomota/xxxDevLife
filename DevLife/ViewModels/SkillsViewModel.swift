@@ -11,21 +11,25 @@ import Combine
 
 class SkillsViewModel: ObservableObject {
     @Published var skillsData: SkillsData?
-    @Published var errorMessage: String?
 
-    func fetchSkillsJson() async {
+    // Função assíncrona para buscar os dados do JSON
+    func fetchSkillsJson() async throws {
         let storage = Storage.storage()
         let skillsRef = storage.reference().child("SkillsEvents.json")
 
         do {
             let data = try await skillsRef.data(maxSize: 1 * 1024 * 1024)
+
+            // Decodificar o JSON em objetos SkillsData
             let decoder = JSONDecoder()
-            self.skillsData = try decoder.decode(SkillsData.self, from: data)
-        } catch let error as NSError {
-            self.errorMessage = "Error: \(error.domain), \(error.code), \(error.localizedDescription)"
-            print(error)
+            let skillsData = try decoder.decode(SkillsData.self, from: data)
+
+            // Atualizar a UI no thread principal
+            await MainActor.run {
+                self.skillsData = skillsData
+            }
+        } catch {
+            throw error
         }
     }
-
-
 }
