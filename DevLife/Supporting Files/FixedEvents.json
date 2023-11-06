@@ -1,0 +1,45 @@
+{
+  "events": {
+    "Year1": [
+      {
+        "id": 1,
+        "title": "Your family supports your decision",
+        "description": "Feeling the support from your family boosts your confidence and motivation to pursue a career in programming.",
+        "credits": 6,
+        "money": 500,
+        "consequences": [
+          {"attribute": "joy", "value": 1},
+          {"attribute": "motivation", "value": 3},
+          {"attribute": "health", "value": 0},
+          {"attribute": "career", "value": 1}
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Your family wants you to follow engineering... but will support you",
+        "description": "Despite their initial reservations, your family agrees to support your programming ambitions, albeit with some concerns.",
+        "credits": 6,
+        "money": 200,
+        "consequences": [
+          {"attribute": "joy", "value": 0},
+          {"attribute": "motivation", "value": 2},
+          {"attribute": "health", "value": 0},
+          {"attribute": "career", "value": 1}
+        ]
+      },
+      {
+        "id": 3,
+        "title": "You received zero support",
+        "description": "Your decision to become a programmer is met with disapproval, leaving you to forge your path without family support.",
+        "credits": 6,
+        "money": -500,
+        "consequences": [
+          {"attribute": "joy", "value": -1},
+          {"attribute": "motivation", "value": 1},
+          {"attribute": "health", "value": -1},
+          {"attribute": "career", "value": 0}
+        ]
+      }
+    ]
+  }
+}
