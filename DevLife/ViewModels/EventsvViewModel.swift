@@ -5,30 +5,40 @@
 //  Created by Horacio Mota on 06/11/23.
 //
 
+import Foundation
 import FirebaseStorage
 import Combine
 
+enum EventsError: Error {
+    case downloadError(String)
+    case decodeError(String)
+}
+
 class EventsViewModel: ObservableObject {
     @Published var events: [Event] = []
-    private var cancellables = Set<AnyCancellable>()
 
-    func fetchEventsJson() {
+    // Função assíncrona para buscar os dados do JSON
+    func fetchEventsJson() async throws {
         let storage = Storage.storage()
-        let storageRef = storage.reference()
-        let eventsRef = storageRef.child("FixedEvents.json") // Caminho do arquivo no Firebase Storage
+        let eventsRef = storage.reference().child("FixedEvents.json")
 
-        // Baixar os dados
-        eventsRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-            if let error = error {
-                // Um erro ocorreu!
-                print("Error fetching events: \(error)")
-            } else if let data = data {
-                // Dados recebidos
-                if let jsonString = String(data: data, encoding: .utf8) {
-                    print("JSON String: \(jsonString)")
-                    // Aqui você pode adicionar a lógica para converter o jsonString em objetos Event
-                }
+        do {
+            let data = try await eventsRef.data(maxSize: 1 * 1024 * 1024)
+
+            // Decodificar o JSON em objetos Event
+            let decoder = JSONDecoder()
+            let container = try decoder.decode(EventsContainer.self, from: data)
+
+            // Supondo que você queira todos os eventos de todos os anos em uma única lista
+            let allEvents = container.events.values.flatMap { $0 }
+
+            await MainActor.run {
+                self.events = allEvents
             }
+        } catch {
+            print("Error: \(error)")
+            throw EventsError.decodeError("Não foi possível decodificar os eventos: \(error.localizedDescription)")
         }
     }
 }
+
