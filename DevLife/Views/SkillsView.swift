@@ -1,64 +1,45 @@
-//
-//  SkillsView.swift
-//  DevLife
-//
-//  Created by Horacio Mota on 06/11/23.
-//
+    //
+    //  SkillsView.swift
+    //  DevLife
+    //
+    //  Created by Horacio Mota on 06/11/23.
+    //
 
 
-import SwiftUI
+    import SwiftUI
 
-struct SkillsView: View {
-    @EnvironmentObject var sharedData: SharedDataModel
-    @Environment(\.presentationMode) var presentationMode
-    @StateObject private var viewModel = SkillsViewModel()
+    struct SkillsView: View {
+        @StateObject private var viewModel = SkillsViewModel()
+        @ObservedObject private var attributesViewModel = AttributesViewModel()
+        @EnvironmentObject var sharedData: SharedDataModel
 
-    var body: some View {
-        NavigationView {
-            List {
-                ForEach(viewModel.skillsData?.Skills ?? []) { category in
-                    Section(header: Text(category.categoryName)) {
-                        ForEach(category.items) { item in
-                            Button(action: {
-                                // Adicione o item selecionado ao modelo de dados compartilhado
-                                sharedData.selectedItems.append(item)
-                                // Atualize os atributos se necessário
-                                // attributesViewModel.updateAttributes(with: item)
-                                // Dismiss the current view to go back to the HomeView
-                                presentationMode.wrappedValue.dismiss()
-                            }) {
-                                VStack(alignment: .leading) {
-                                    Text(item.name).font(.headline)
-                                    Text(item.description).font(.subheadline)
-                                }
-                            }
+        var body: some View {
+            NavigationView {
+                List(viewModel.skillsData?.Skills ?? []) { category in
+                    NavigationLink(destination: CategoryDetailView(category: category, attributesViewModel: attributesViewModel)
+                        .environmentObject(sharedData)) {
+                            Text(category.categoryName)
                         }
-                    }
                 }
-            }
-            .navigationTitle("Skills")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Close") {
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                }
-            }
-            .onAppear {
-                Task {
-                    do {
-                        try await viewModel.fetchSkillsJson()
-                    } catch {
-                        print("Erro ao buscar habilidades: \(error.localizedDescription)")
+                .navigationTitle("Skills")
+                .onAppear {
+                    Task {
+                        do {
+                            try await viewModel.fetchSkillsJson()
+                        } catch {
+                            // Aqui você pode lidar com o erro, por exemplo, mostrando uma mensagem para o usuário
+                            print("Erro ao buscar habilidades: \(error.localizedDescription)")
+                        }
                     }
                 }
             }
         }
     }
-}
 
-
-#Preview {
-    SkillsView()
-        .environmentObject(SharedDataModel())
-}
+    // Não esqueça de adicionar o EnvironmentObject ao seu PreviewProvider se necessário
+    struct SkillsView_Previews: PreviewProvider {
+        static var previews: some View {
+            SkillsView()
+                .environmentObject(SharedDataModel())
+        }
+    }
