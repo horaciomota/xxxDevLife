@@ -20,12 +20,14 @@ struct HomeView: View {
 
     var body: some View {
         VStack {
-            AttributesView(attributes: attributes)
-
-            if let errorMessage = errorMessage {
-                Text("Erro: \(errorMessage)")
+            // Verifica se há uma mensagem de erro e a exibe
+            if let errorMessage = viewModel.errorMessage {
+                Text(errorMessage)
                     .foregroundColor(.red)
+                    .padding()
             }
+            // Inclui component de estatistica
+            AttributesView(attributes: attributes)
 
             List(viewModel.events) { event in
                 VStack(alignment: .leading) {
@@ -37,29 +39,11 @@ struct HomeView: View {
             }
         }
         .onAppear {
-            Task {
-                do {
-                    try await viewModel.fetchEventsJson()
-                } catch {
-                    if let eventsError = error as? EventsError {
-                        switch eventsError {
-                        case .downloadError(let message), .decodeError(let message):
-                            self.errorMessage = message
-                        }
-                    } else {
-                        self.errorMessage = error.localizedDescription
-                    }
-                }
-            }
+            viewModel.fetchAndHandleEventsJson()
         }
         .padding()
     }
 }
-
-
-// Certifique-se de que o nome do método chamado no .onAppear() está correto.
-// Deve corresponder ao nome do método dentro do seu ViewModel que inicia o processo de carregamento dos eventos.
-
 
 #Preview {
     HomeView()

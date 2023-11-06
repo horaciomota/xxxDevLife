@@ -16,6 +16,7 @@ enum EventsError: Error {
 
 class EventsViewModel: ObservableObject {
     @Published var events: [Event] = []
+    @Published var errorMessage: String? // Logica de tratamento de erros separada da view
 
     // Função assíncrona para buscar os dados do JSON
     func fetchEventsJson() async throws {
@@ -40,5 +41,26 @@ class EventsViewModel: ObservableObject {
             throw EventsError.decodeError("Não foi possível decodificar os eventos: \(error.localizedDescription)")
         }
     }
-}
+
+    // Logica de tratamento de erros
+    func fetchAndHandleEventsJson() {
+            Task {
+                do {
+                    try await fetchEventsJson()
+                } catch let error as EventsError {
+                    switch error {
+                    case .downloadError(let message), .decodeError(let message):
+                        DispatchQueue.main.async {
+                            self.errorMessage = message
+                        }
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        self.errorMessage = error.localizedDescription
+                    }
+                }
+            }
+        }
+    }
+
 
