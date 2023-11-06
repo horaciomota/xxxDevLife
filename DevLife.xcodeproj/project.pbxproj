@@ -22,6 +22,7 @@
 		3D0FBFA62AF94DC200F46DAC /* EventsvViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFA52AF94DC200F46DAC /* EventsvViewModel.swift */; };
 		3D0FBFA82AF94E5D00F46DAC /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFA72AF94E5D00F46DAC /* Events.swift */; };
 		3D0FBFAE2AF9536100F46DAC /* AttributesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFAD2AF9536100F46DAC /* AttributesView.swift */; };
+		3D0FBFB02AF9611500F46DAC /* AttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFAF2AF9611500F46DAC /* AttributesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		3D0FBFA72AF94E5D00F46DAC /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		3D0FBFAB2AF9508A00F46DAC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3D0FBFAD2AF9536100F46DAC /* AttributesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributesView.swift; sourceTree = "<group>"; };
+		3D0FBFAF2AF9611500F46DAC /* AttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				3D0FBFA52AF94DC200F46DAC /* EventsvViewModel.swift */,
+				3D0FBFAF2AF9611500F46DAC /* AttributesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D0FBFA82AF94E5D00F46DAC /* Events.swift in Sources */,
+				3D0FBFB02AF9611500F46DAC /* AttributesViewModel.swift in Sources */,
 				3D0FBF692AF9486F00F46DAC /* HomeView.swift in Sources */,
 				3D0FBFA62AF94DC200F46DAC /* EventsvViewModel.swift in Sources */,
 				3D0FBF672AF9486F00F46DAC /* DevLifeApp.swift in Sources */,

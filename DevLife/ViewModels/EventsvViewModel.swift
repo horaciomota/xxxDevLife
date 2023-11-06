@@ -17,6 +17,13 @@ enum EventsError: Error {
 class EventsViewModel: ObservableObject {
     @Published var events: [Event] = [] // Array cos os eventos do Json
     @Published var errorMessage: String? // Logica de tratamento de erros separada da view
+    var attributesViewModel = AttributesViewModel()
+
+
+    /// Seleciona um evento e aplica suas consequências aos atributos do jogador.
+    func eventSelected(_ event: Event) {
+        attributesViewModel.applyEventConsequences(event.consequences)
+    }
 
     // Função assíncrona para buscar os dados do JSON
     func fetchEventsJson() async throws {
