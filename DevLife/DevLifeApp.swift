@@ -24,7 +24,10 @@ struct DevLifeApp: App {
   var body: some Scene {
     WindowGroup {
       NavigationView {
-          HomeView()
+          TabBarView()
+              .environmentObject(AttributesViewModel())
+              .environmentObject(SharedDataModel())
+              .environmentObject(CreditsViewModel())
       }
     }
   }

@@ -1,27 +1,30 @@
-//
-//  SkillsView.swift
-//  DevLife
-//
-//  Created by Horacio Mota on 06/11/23.
-//
+    //
+    //  SkillsView.swift
+    //  DevLife
+    //
+    //  Created by Horacio Mota on 06/11/23.
+    //
+
+
+    import SwiftUI
 
 import SwiftUI
 
 struct SkillsView: View {
     @StateObject private var viewModel = SkillsViewModel()
-    @ObservedObject private var attributesViewModel = AttributesViewModel()
+    @EnvironmentObject var attributesViewModel: AttributesViewModel
+    @EnvironmentObject var sharedData: SharedDataModel
 
     var body: some View {
         NavigationView {
-                   List {
-                       if let skills = viewModel.skillsData?.Skills {
-                           ForEach(skills) { category in
-                               NavigationLink(destination: CategoryDetailView(category: category, attributesViewModel: attributesViewModel)) {
-                                   Text(category.categoryName)
-                               }
-                           }
-                       }
-                   }
+            List(viewModel.skillsData?.Skills ?? []) { category in
+                NavigationLink(destination: CategoryDetailView(category: category)
+                    .environmentObject(sharedData)
+                    .environmentObject(attributesViewModel)) { // Passe o EnvironmentObject
+                        Text(category.categoryName)
+                    }
+            }
+            .navigationTitle("Skills")
             .onAppear {
                 Task {
                     do {
@@ -31,7 +34,7 @@ struct SkillsView: View {
                     } catch DataFetchError.decodeError(let message) {
                         print("Decode error: \(message)")
                     } catch {
-                        print("An unexpected error occurred: \(error.localizedDescription)")
+                        print("An unexpected error occurred: \(error)")
                     }
                 }
             }
@@ -39,7 +42,11 @@ struct SkillsView: View {
     }
 }
 
-
-#Preview {
-    SkillsView()
+// Não esqueça de adicionar o EnvironmentObject ao seu PreviewProvider se necessário
+struct SkillsView_Previews: PreviewProvider {
+    static var previews: some View {
+        SkillsView()
+            .environmentObject(SharedDataModel())
+            .environmentObject(AttributesViewModel())
+    }
 }
