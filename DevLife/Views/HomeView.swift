@@ -1,5 +1,5 @@
 import SwiftUI
-import FloatingButton // Certifique-se de importar o pacote FloatingButton se necessário
+import FloatingButton
 
 struct HomeView: View {
     @EnvironmentObject var attributesViewModel: AttributesViewModel
@@ -76,7 +76,7 @@ struct HomeView: View {
                     HStack {
                         Spacer()
                         FloatingButtonView(isOpen: $isFloatingButtonOpen)
-                            .padding(20) // Isso adiciona espaço em todas as direções
+                            .padding(20)
                     }
                 }
             }
@@ -92,8 +92,8 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-            .environmentObject(AttributesViewModel()) // Garante que o AttributesViewModel esteja disponível
-            .environmentObject(SharedDataModel()) // Garante que o SharedDataModel esteja disponível
-            .environmentObject(CreditsViewModel()) // Garante que o CreditsViewModel esteja disponível
+            .environmentObject(AttributesViewModel())
+            .environmentObject(SharedDataModel())
+            .environmentObject(CreditsViewModel())
     }
 }

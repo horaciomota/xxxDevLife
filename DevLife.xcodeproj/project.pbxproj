@@ -36,6 +36,7 @@
 		3D0FBFCA2AFAB15F00F46DAC /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 3D0FBFC92AFAB15F00F46DAC /* PopupView */; };
 		3D0FBFCD2AFAC2E400F46DAC /* FloatingButton in Frameworks */ = {isa = PBXBuildFile; productRef = 3D0FBFCC2AFAC2E400F46DAC /* FloatingButton */; };
 		3D0FBFCF2AFAC4AC00F46DAC /* FloatingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFCE2AFAC4AC00F46DAC /* FloatingButtonView.swift */; };
+		3D0FBFD12AFAD3A600F46DAC /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFD02AFAD3A600F46DAC /* CreateUserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		3D0FBFC42AFA98D900F46DAC /* CreditsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewModel.swift; sourceTree = "<group>"; };
 		3D0FBFC62AFAAD9600F46DAC /* CreditAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditAlertView.swift; sourceTree = "<group>"; };
 		3D0FBFCE2AFAC4AC00F46DAC /* FloatingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonView.swift; sourceTree = "<group>"; };
+		3D0FBFD02AFAD3A600F46DAC /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 				3D0FBFC22AF9870C00F46DAC /* TabBarView.swift */,
 				3D0FBFC62AFAAD9600F46DAC /* CreditAlertView.swift */,
 				3D0FBFAC2AF9534800F46DAC /* Components */,
+				3D0FBFD02AFAD3A600F46DAC /* CreateUserView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				3D0FBF692AF9486F00F46DAC /* HomeView.swift in Sources */,
 				3D0FBFB92AF9692300F46DAC /* SkillsView.swift in Sources */,
 				3D0FBFA62AF94DC200F46DAC /* EventsvViewModel.swift in Sources */,
+				3D0FBFD12AFAD3A600F46DAC /* CreateUserView.swift in Sources */,
 				3D0FBFCF2AFAC4AC00F46DAC /* FloatingButtonView.swift in Sources */,
 				3D0FBFBB2AF9719A00F46DAC /* CategoryDetailView.swift in Sources */,
 				3D0FBFB52AF968C800F46DAC /* Skills.swift in Sources */,
