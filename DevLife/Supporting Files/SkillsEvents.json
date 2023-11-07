@@ -10,7 +10,8 @@
           "attributes": [
             { "name": "motivation", "value": 2 },
             { "name": "career", "value": 3 }
-          ]
+          ],
+          "cost": 2
         },
         {
           "name": "Python",
@@ -18,7 +19,8 @@
           "attributes": [
             { "name": "motivation", "value": 2 },
             { "name": "career", "value": 3 }
-          ]
+          ],
+          "cost": 2
         },
         {
           "name": "JavaScript",
@@ -26,7 +28,8 @@
           "attributes": [
             { "name": "motivation", "value": 2 },
             { "name": "career", "value": 3 }
-          ]
+          ],
+          "cost": 5
         }
       ]
     },
@@ -40,7 +43,8 @@
           "attributes": [
             { "name": "motivation", "value": 2 },
             { "name": "career", "value": 3 }
-          ]
+          ],
+          "cost": 2
         },
         {
           "name": "Problem-Solving",
@@ -48,7 +52,8 @@
           "attributes": [
             { "name": "motivation", "value": 2 },
             { "name": "career", "value": 3 }
-          ]
+          ],
+          "cost": 2
         },
         {
           "name": "Teamwork",
@@ -56,7 +61,8 @@
           "attributes": [
             { "name": "motivation", "value": 2 },
             { "name": "career", "value": 3 }
-          ]
+          ],
+          "cost": 2
         }
       ]
     }

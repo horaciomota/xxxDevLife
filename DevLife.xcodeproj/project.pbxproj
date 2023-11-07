@@ -31,6 +31,7 @@
 		3D0FBFBF2AF97EC100F46DAC /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFBE2AF97EC100F46DAC /* FirestoreManager.swift */; };
 		3D0FBFC12AF97F0600F46DAC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFC02AF97F0600F46DAC /* HomeViewModel.swift */; };
 		3D0FBFC32AF9870C00F46DAC /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFC22AF9870C00F46DAC /* TabBarView.swift */; };
+		3D0FBFC52AFA98D900F46DAC /* CreditsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFC42AFA98D900F46DAC /* CreditsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		3D0FBFBE2AF97EC100F46DAC /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		3D0FBFC02AF97F0600F46DAC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		3D0FBFC22AF9870C00F46DAC /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		3D0FBFC42AFA98D900F46DAC /* CreditsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 				3D0FBFAF2AF9611500F46DAC /* AttributesViewModel.swift */,
 				3D0FBFB62AF968E800F46DAC /* SkillsViewModel.swift */,
 				3D0FBFC02AF97F0600F46DAC /* HomeViewModel.swift */,
+				3D0FBFC42AFA98D900F46DAC /* CreditsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				3D0FBFA82AF94E5D00F46DAC /* Events.swift in Sources */,
 				3D0FBFB02AF9611500F46DAC /* AttributesViewModel.swift in Sources */,
 				3D0FBFC32AF9870C00F46DAC /* TabBarView.swift in Sources */,
+				3D0FBFC52AFA98D900F46DAC /* CreditsViewModel.swift in Sources */,
 				3D0FBF692AF9486F00F46DAC /* HomeView.swift in Sources */,
 				3D0FBFB92AF9692300F46DAC /* SkillsView.swift in Sources */,
 				3D0FBFA62AF94DC200F46DAC /* EventsvViewModel.swift in Sources */,

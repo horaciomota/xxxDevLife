@@ -26,6 +26,8 @@ struct DevLifeApp: App {
       NavigationView {
           TabBarView()
               .environmentObject(AttributesViewModel())
+              .environmentObject(SharedDataModel())
+              .environmentObject(CreditsViewModel())
       }
     }
   }

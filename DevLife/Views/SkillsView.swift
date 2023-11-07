@@ -12,7 +12,7 @@ import SwiftUI
 
 struct SkillsView: View {
     @StateObject private var viewModel = SkillsViewModel()
-    @EnvironmentObject var attributesViewModel: AttributesViewModel // Use EnvironmentObject aqui
+    @EnvironmentObject var attributesViewModel: AttributesViewModel
     @EnvironmentObject var sharedData: SharedDataModel
 
     var body: some View {
@@ -29,9 +29,12 @@ struct SkillsView: View {
                 Task {
                     do {
                         try await viewModel.fetchSkillsJson()
+                    } catch DataFetchError.downloadError(let message) {
+                        print("Download error: \(message)")
+                    } catch DataFetchError.decodeError(let message) {
+                        print("Decode error: \(message)")
                     } catch {
-                        // Aqui você pode lidar com o erro, por exemplo, mostrando uma mensagem para o usuário
-                        print("Erro ao buscar habilidades: \(error.localizedDescription)")
+                        print("An unexpected error occurred: \(error)")
                     }
                 }
             }
@@ -44,6 +47,6 @@ struct SkillsView_Previews: PreviewProvider {
     static var previews: some View {
         SkillsView()
             .environmentObject(SharedDataModel())
-            .environmentObject(AttributesViewModel()) // Adicione isso também
+            .environmentObject(AttributesViewModel())
     }
 }

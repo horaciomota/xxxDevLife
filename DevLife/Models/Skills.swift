@@ -30,6 +30,7 @@ struct SkillItem: Codable, Identifiable {
     let name: String
     let description: String
     let attributes: [AttributeEffect]
+    let cost: Int
 }
 
 struct AttributeEffect: Codable {
