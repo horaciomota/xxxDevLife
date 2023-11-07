@@ -5,13 +5,35 @@ struct HomeView: View {
     @EnvironmentObject var attributesViewModel: AttributesViewModel
     @EnvironmentObject var sharedData: SharedDataModel
     @EnvironmentObject var creditsViewModel: CreditsViewModel
+    @StateObject private var userViewModel = UserViewModel()
+
 
     @StateObject private var eventsViewModel = EventsViewModel()
     @StateObject private var homeViewModel = HomeViewModel()
 
     @State private var isFloatingButtonOpen = false
+    @State private var isPlayerCreated = UserDefaults.standard.bool(forKey: "isCharacterCreated")
+
+    @State private var userName: String = ""
+     @State private var userAge: Int = 0
+     @State private var userGender: String = ""
 
     var body: some View {
+        Group {
+            if isPlayerCreated {
+                mainContentView
+            } else {
+                CreateUserView(isCharacterCreated: $isPlayerCreated)
+            }
+        }
+        .onAppear {
+            print("HomeView appeared")
+            eventsViewModel.fetchAndHandleEventsJson()
+            homeViewModel.loadYearRecords()
+        }
+    }
+
+    var mainContentView: some View {
         NavigationView {
             ZStack {
                 VStack {
@@ -24,6 +46,10 @@ struct HomeView: View {
                     ])
 
                     // Exibe os créditos disponíveis
+                    Text("Name: \(userViewModel.userName)")
+                        .font(.headline)
+                    Text("Age: \(userViewModel.userAge)")
+                        .font(.headline)
                     Text("Credits: \(creditsViewModel.credits)")
                         .font(.headline)
                         .padding()
@@ -81,12 +107,8 @@ struct HomeView: View {
                 }
             }
         }
-        .onAppear {
-            print("HomeView appeared")
-            eventsViewModel.fetchAndHandleEventsJson()
-            homeViewModel.loadYearRecords()
-        }
     }
+
 }
 
 struct HomeView_Previews: PreviewProvider {

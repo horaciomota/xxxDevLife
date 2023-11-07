@@ -37,6 +37,9 @@
 		3D0FBFCD2AFAC2E400F46DAC /* FloatingButton in Frameworks */ = {isa = PBXBuildFile; productRef = 3D0FBFCC2AFAC2E400F46DAC /* FloatingButton */; };
 		3D0FBFCF2AFAC4AC00F46DAC /* FloatingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFCE2AFAC4AC00F46DAC /* FloatingButtonView.swift */; };
 		3D0FBFD12AFAD3A600F46DAC /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFD02AFAD3A600F46DAC /* CreateUserView.swift */; };
+		3D0FBFD72AFADC5800F46DAC /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFD62AFADC5800F46DAC /* AppViewModel.swift */; };
+		3D0FBFD92AFAE19200F46DAC /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFD82AFAE19200F46DAC /* UserViewModel.swift */; };
+		3D0FBFDB2AFAE6DA00F46DAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFDA2AFAE6DA00F46DAC /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +91,9 @@
 		3D0FBFC62AFAAD9600F46DAC /* CreditAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditAlertView.swift; sourceTree = "<group>"; };
 		3D0FBFCE2AFAC4AC00F46DAC /* FloatingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonView.swift; sourceTree = "<group>"; };
 		3D0FBFD02AFAD3A600F46DAC /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
+		3D0FBFD62AFADC5800F46DAC /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		3D0FBFD82AFAE19200F46DAC /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		3D0FBFDA2AFAE6DA00F46DAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +223,7 @@
 				3D0FBFB62AF968E800F46DAC /* SkillsViewModel.swift */,
 				3D0FBFC02AF97F0600F46DAC /* HomeViewModel.swift */,
 				3D0FBFC42AFA98D900F46DAC /* CreditsViewModel.swift */,
+				3D0FBFD82AFAE19200F46DAC /* UserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -231,6 +238,8 @@
 				3D0FBFC62AFAAD9600F46DAC /* CreditAlertView.swift */,
 				3D0FBFAC2AF9534800F46DAC /* Components */,
 				3D0FBFD02AFAD3A600F46DAC /* CreateUserView.swift */,
+				3D0FBFD62AFADC5800F46DAC /* AppViewModel.swift */,
+				3D0FBFDA2AFAE6DA00F46DAC /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -400,6 +409,8 @@
 			files = (
 				3D0FBFA82AF94E5D00F46DAC /* Events.swift in Sources */,
 				3D0FBFB02AF9611500F46DAC /* AttributesViewModel.swift in Sources */,
+				3D0FBFDB2AFAE6DA00F46DAC /* ContentView.swift in Sources */,
+				3D0FBFD72AFADC5800F46DAC /* AppViewModel.swift in Sources */,
 				3D0FBFC32AF9870C00F46DAC /* TabBarView.swift in Sources */,
 				3D0FBFC52AFA98D900F46DAC /* CreditsViewModel.swift in Sources */,
 				3D0FBF692AF9486F00F46DAC /* HomeView.swift in Sources */,
@@ -410,6 +421,7 @@
 				3D0FBFBB2AF9719A00F46DAC /* CategoryDetailView.swift in Sources */,
 				3D0FBFB52AF968C800F46DAC /* Skills.swift in Sources */,
 				3D0FBFBF2AF97EC100F46DAC /* FirestoreManager.swift in Sources */,
+				3D0FBFD92AFAE19200F46DAC /* UserViewModel.swift in Sources */,
 				3D0FBFC12AF97F0600F46DAC /* HomeViewModel.swift in Sources */,
 				3D0FBF672AF9486F00F46DAC /* DevLifeApp.swift in Sources */,
 				3D0FBFBD2AF97E8C00F46DAC /* YearRecord.swift in Sources */,
