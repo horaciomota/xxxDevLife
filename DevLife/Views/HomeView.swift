@@ -51,7 +51,8 @@ struct HomeView: View {
                             creditsViewModel.credits -= 1
                             print("Event selected: \(event.title)")
                         } else {
-                            print("Not enough credits")
+                            // Feedback para o usuário
+                            print("Not enough credits to select this event")
                         }
                     }) {
                         VStack(alignment: .leading) {
@@ -61,8 +62,7 @@ struct HomeView: View {
                                 .font(.subheadline)
                         }
                     }
-                }
-            }
+                }            }
         }
         .onAppear {
             print("HomeView appeared")

@@ -32,6 +32,8 @@
 		3D0FBFC12AF97F0600F46DAC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFC02AF97F0600F46DAC /* HomeViewModel.swift */; };
 		3D0FBFC32AF9870C00F46DAC /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFC22AF9870C00F46DAC /* TabBarView.swift */; };
 		3D0FBFC52AFA98D900F46DAC /* CreditsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFC42AFA98D900F46DAC /* CreditsViewModel.swift */; };
+		3D0FBFC72AFAAD9600F46DAC /* CreditAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FBFC62AFAAD9600F46DAC /* CreditAlertView.swift */; };
+		3D0FBFCA2AFAB15F00F46DAC /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 3D0FBFC92AFAB15F00F46DAC /* PopupView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,7 @@
 		3D0FBFC02AF97F0600F46DAC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		3D0FBFC22AF9870C00F46DAC /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		3D0FBFC42AFA98D900F46DAC /* CreditsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewModel.swift; sourceTree = "<group>"; };
+		3D0FBFC62AFAAD9600F46DAC /* CreditAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditAlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,7 @@
 			files = (
 				3D0FBFA42AF94BEA00F46DAC /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				3D0FBF9C2AF94B0500F46DAC /* FirebaseFirestore in Frameworks */,
+				3D0FBFCA2AFAB15F00F46DAC /* PopupView in Frameworks */,
 				3D0FBFA22AF94BEA00F46DAC /* FirebaseAnalytics in Frameworks */,
 				3D0FBF9E2AF94B0500F46DAC /* FirebaseStorage in Frameworks */,
 			);
@@ -217,6 +221,7 @@
 				3D0FBF682AF9486F00F46DAC /* HomeView.swift */,
 				3D0FBFB82AF9692300F46DAC /* SkillsView.swift */,
 				3D0FBFC22AF9870C00F46DAC /* TabBarView.swift */,
+				3D0FBFC62AFAAD9600F46DAC /* CreditAlertView.swift */,
 				3D0FBFAC2AF9534800F46DAC /* Components */,
 			);
 			path = Views;
@@ -262,6 +267,7 @@
 				3D0FBF9D2AF94B0500F46DAC /* FirebaseStorage */,
 				3D0FBFA12AF94BEA00F46DAC /* FirebaseAnalytics */,
 				3D0FBFA32AF94BEA00F46DAC /* FirebaseAnalyticsWithoutAdIdSupport */,
+				3D0FBFC92AFAB15F00F46DAC /* PopupView */,
 			);
 			productName = DevLife;
 			productReference = 3D0FBF632AF9486F00F46DAC /* DevLife.app */;
@@ -337,6 +343,7 @@
 			mainGroup = 3D0FBF5A2AF9486F00F46DAC;
 			packageReferences = (
 				3D0FBF982AF94B0500F46DAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3D0FBFC82AFAB15F00F46DAC /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
 			productRefGroup = 3D0FBF642AF9486F00F46DAC /* Products */;
 			projectDirPath = "";
@@ -395,6 +402,7 @@
 				3D0FBF672AF9486F00F46DAC /* DevLifeApp.swift in Sources */,
 				3D0FBFBD2AF97E8C00F46DAC /* YearRecord.swift in Sources */,
 				3D0FBFB72AF968E800F46DAC /* SkillsViewModel.swift in Sources */,
+				3D0FBFC72AFAAD9600F46DAC /* CreditAlertView.swift in Sources */,
 				3D0FBFAE2AF9536100F46DAC /* AttributesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -762,6 +770,14 @@
 				minimumVersion = 10.17.0;
 			};
 		};
+		3D0FBFC82AFAB15F00F46DAC /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -784,6 +800,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3D0FBF982AF94B0500F46DAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		3D0FBFC92AFAB15F00F46DAC /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D0FBFC82AFAB15F00F46DAC /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
