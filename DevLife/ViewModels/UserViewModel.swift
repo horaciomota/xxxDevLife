@@ -15,7 +15,15 @@ class UserViewModel: ObservableObject {
     private var db = Firestore.firestore()
 
     func fetchUserData() {
-        let userId = "id_do_usuario_atual"
+        // Recupera o userId do UserDefaults
+        let userId = UserDefaults.standard.string(forKey: "currentUserId") ?? ""
+
+        // Verifique se o userId não está vazio antes de continuar
+        guard !userId.isEmpty else {
+            print("UserID is empty, cannot fetch user data.")
+            return
+        }
+
         let userRef = db.collection("users").document(userId)
 
         userRef.getDocument { (document, error) in

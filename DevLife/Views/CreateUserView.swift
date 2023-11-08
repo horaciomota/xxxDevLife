@@ -39,7 +39,8 @@ struct CreateUserView: View {
 
     private func saveUserInformation() {
         let db = Firestore.firestore()
-        let userRef = db.collection("users").document(name)  // Modificado para usar uma coleção genérica
+        let userId = UUID().uuidString // Gera um novo UUID para o usuário
+        let userRef = db.collection("users").document(userId)
 
         let userData = [
             "UserName": name,
@@ -47,24 +48,21 @@ struct CreateUserView: View {
             "UserGender": gender
         ] as [String : Any]
 
-        // Salvar no Firestore
-        userRef.setData(userData)
-
-        // Salvar localmente
-        UserDefaults.standard.set(userData, forKey: "currentUserData")
-
         userRef.setData(userData) { error in
             if let error = error {
                 self.errorMessage = "Error saving user: \(error.localizedDescription)"
             } else {
-                // Atualiza a flag no UserDefaults e o estado do Binding
+                let userId = userRef.documentID // Ou o ID que você usa para criar o usuário no Firestore
+                UserDefaults.standard.set(userId, forKey: "currentUserId")
+
+                UserDefaults.standard.set(userData, forKey: "currentUserData") // Salva os dados do usuário
                 UserDefaults.standard.set(true, forKey: "isCharacterCreated")
                 self.isCharacterCreated = true
                 self.errorMessage = "User saved successfully!"
-                // Aqui você pode adicionar uma navegação ou fechar a view atual, se necessário
             }
         }
     }
+
 }
 
 // Para o preview, você precisará fornecer um Binding falso

@@ -22,6 +22,9 @@ struct HomeView: View {
         Group {
             if isPlayerCreated {
                 mainContentView
+                    .onAppear {
+                        userViewModel.fetchUserData()
+                    }
             } else {
                 CreateUserView(isCharacterCreated: $isPlayerCreated)
             }
