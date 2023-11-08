@@ -1,16 +1,30 @@
-//
-//  TabBarView.swift
-//  DevLife
-//
-//  Created by Horacio Mota on 06/11/23.
-//
-
 import SwiftUI
 
 struct TabBarView: View {
     @StateObject var sharedData = SharedDataModel()
+    @StateObject var userViewModel = UserViewModel()
+    @State private var isCharacterCreated = UserDefaults.standard.bool(forKey: "isCharacterCreated")
 
     var body: some View {
+        Group {
+            if isCharacterCreated {
+                tabView
+            } else {
+                CreateUserView(isCharacterCreated: $isCharacterCreated)
+            }
+        }
+        .onAppear {
+            userViewModel.fetchUserData()
+            if userViewModel.userID.isEmpty {
+                isCharacterCreated = false
+                UserDefaults.standard.set(false, forKey: "isCharacterCreated")
+            }
+        }
+        .environmentObject(sharedData)
+        .environmentObject(userViewModel)
+    }
+
+    var tabView: some View {
         TabView {
             NavigationView {
                 HomeView()
@@ -25,13 +39,19 @@ struct TabBarView: View {
             .tabItem {
                 Label("Skills", systemImage: "list.bullet")
             }
+
+            NavigationView {
+                SettingsView()
+            }
+            .tabItem {
+                Label("Settings", systemImage: "gear")
+            }
         }
-        .environmentObject(sharedData)
     }
 }
 
-
-#Preview {
-    TabBarView()
-
+struct TabBarView_Previews: PreviewProvider {
+    static var previews: some View {
+        TabBarView()
+    }
 }

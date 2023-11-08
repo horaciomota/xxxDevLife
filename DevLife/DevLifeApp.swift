@@ -20,6 +20,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct DevLifeApp: App {
   // register app delegate for Firebase setup
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var viewModel = AppViewModel()
+
 
   var body: some Scene {
     WindowGroup {
@@ -28,6 +30,9 @@ struct DevLifeApp: App {
               .environmentObject(AttributesViewModel())
               .environmentObject(SharedDataModel())
               .environmentObject(CreditsViewModel())
+              .environmentObject(UserViewModel()) 
+              .environmentObject(viewModel)
+
       }
     }
   }
