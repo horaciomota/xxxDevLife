@@ -31,6 +31,7 @@ struct SettingsView: View {
                     Button("Delete User", role: .destructive) {
                         deleteUser()
                     }
+                    .foregroundStyle(Color.red)
                 }
                 .alert("User Deleted", isPresented: $showAlert) {
                     Button("OK", role: .cancel) {
@@ -68,5 +69,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    CreateUserView(isCharacterCreated: .constant(true))
+    SettingsView()
 }

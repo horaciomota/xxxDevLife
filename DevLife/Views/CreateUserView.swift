@@ -2,12 +2,13 @@ import SwiftUI
 import Firebase
 
 struct CreateUserView: View {
-    @EnvironmentObject var viewModel: AppViewModel
+    @Environment(\.presentationMode) var presentationMode
     @Binding var isCharacterCreated: Bool
     @State private var name: String = ""
     @State private var age: String = ""
     @State private var gender: String = ""
     @State private var errorMessage: String?
+    @State private var navigateToHomeView = false
 
     var body: some View {
         NavigationView {
@@ -34,6 +35,14 @@ struct CreateUserView: View {
                 }
             }
             .navigationBarTitle("Create User")
+            // Navegação programática para HomeView
+            .background(
+                NavigationLink(
+                    destination: HomeView(),
+                    isActive: $navigateToHomeView,
+                    label: { EmptyView() } // Corrigido aqui
+                )
+            )
         }
     }
 
@@ -52,17 +61,14 @@ struct CreateUserView: View {
             if let error = error {
                 self.errorMessage = "Error saving user: \(error.localizedDescription)"
             } else {
-                let userId = userRef.documentID // Ou o ID que você usa para criar o usuário no Firestore
                 UserDefaults.standard.set(userId, forKey: "currentUserId")
-
-                UserDefaults.standard.set(userData, forKey: "currentUserData") // Salva os dados do usuário
+                UserDefaults.standard.set(userData, forKey: "currentUserData")
                 UserDefaults.standard.set(true, forKey: "isCharacterCreated")
                 self.isCharacterCreated = true
-                self.errorMessage = "User saved successfully!"
+                self.navigateToHomeView = true // Ativa a navegação para HomeView
             }
         }
     }
-
 }
 
 // Para o preview, você precisará fornecer um Binding falso
