@@ -25,6 +25,13 @@ struct TabBarView: View {
             .tabItem {
                 Label("Skills", systemImage: "list.bullet")
             }
+
+            NavigationView {
+                SettingsView()
+            }
+            .tabItem {
+                Label("Settings", systemImage: "gear")
+            }
         }
         .environmentObject(sharedData)
     }
