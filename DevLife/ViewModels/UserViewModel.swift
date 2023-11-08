@@ -12,6 +12,8 @@ class UserViewModel: ObservableObject {
     @Published var userID: String = UserDefaults.standard.string(forKey: "currentUserId") ?? ""
     @Published var userName: String = ""
     @Published var userAge: Int = 0
+    @Published var isUserDataFetched = false
+
 
     private var db = Firestore.firestore()
 
@@ -31,9 +33,13 @@ class UserViewModel: ObservableObject {
             } else {
                 print("Document does not exist")
             }
+            DispatchQueue.main.async {
+                    self.isUserDataFetched = true
+                }
+
         }
     }
-
+    
 
     func deleteUser(completion: @escaping (Bool) -> Void) {
         guard let userId = UserDefaults.standard.string(forKey: "currentUserId") else {

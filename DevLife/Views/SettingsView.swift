@@ -8,10 +8,16 @@
 import SwiftUI
 import Firebase
 
+class UserCreationState: ObservableObject {
+    @Published var shouldCreateCharacter: Bool = false
+}
+
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showAlert = false
+    @State private var navigateToCreateUser = false // Estado para controlar a navegação
     @State private var errorMessage: String? = nil
+
     var body: some View {
         NavigationView {
             List {
@@ -35,15 +41,18 @@ struct SettingsView: View {
                 }
                 .alert("User Deleted", isPresented: $showAlert) {
                     Button("OK", role: .cancel) {
-                        // Redireciona para a página de criação de personagem
-                        UserDefaults.standard.set(false, forKey: "isCharacterCreated")
-                        presentationMode.wrappedValue.dismiss()
+                        // Define o estado para navegar para a CreateUserView
+                        navigateToCreateUser = true
                     }
                 } message: {
                     Text(errorMessage ?? "Your user has been successfully deleted.")
                 }
             }
             .navigationTitle("Configurações")
+            .navigationDestination(isPresented: $navigateToCreateUser) {
+                CreateUserView(isCharacterCreated: .constant(false)) // Passa um Binding falso
+                    .environmentObject(AppViewModel()) // Certifique-se de passar todos os EnvironmentObjects necessários
+            }
         }
     }
     private func deleteUser() {

@@ -1,27 +1,26 @@
-//
-//  ContentView.swift
-//  DevLife
-//
-//  Created by Horacio Mota on 07/11/23.
-//
-
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var userViewModel = UserViewModel()
+    @EnvironmentObject var userViewModel: UserViewModel
     @State private var isCharacterCreated = UserDefaults.standard.bool(forKey: "isCharacterCreated")
 
     var body: some View {
         Group {
-            if isCharacterCreated && !userViewModel.userID.isEmpty {
+            if isCharacterCreated && userViewModel.isUserDataFetched {
                 HomeView()
             } else {
                 CreateUserView(isCharacterCreated: $isCharacterCreated)
             }
         }
         .onAppear {
+            // Tenta buscar os dados do usuário ao carregar a view
             userViewModel.fetchUserData()
-            if userViewModel.userID.isEmpty {
+        }
+        .onChange(of: userViewModel.isUserDataFetched) { isFetched in
+            // Quando os dados do usuário são buscados, atualiza o estado de criação do personagem
+            if isFetched {
+                isCharacterCreated = true
+            } else {
                 isCharacterCreated = false
                 UserDefaults.standard.set(false, forKey: "isCharacterCreated")
             }
@@ -29,7 +28,10 @@ struct ContentView: View {
     }
 }
 
-
-#Preview {
-    ContentView()
+// Para o preview, você precisará fornecer um EnvironmentObject falso
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+            .environmentObject(UserViewModel())
+    }
 }
