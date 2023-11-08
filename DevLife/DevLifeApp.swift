@@ -30,6 +30,7 @@ struct DevLifeApp: App {
               .environmentObject(AttributesViewModel())
               .environmentObject(SharedDataModel())
               .environmentObject(CreditsViewModel())
+              .environmentObject(UserViewModel()) 
               .environmentObject(viewModel)
 
       }

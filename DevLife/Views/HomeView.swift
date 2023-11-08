@@ -5,8 +5,7 @@ struct HomeView: View {
     @EnvironmentObject var attributesViewModel: AttributesViewModel
     @EnvironmentObject var sharedData: SharedDataModel
     @EnvironmentObject var creditsViewModel: CreditsViewModel
-    @StateObject private var userViewModel = UserViewModel()
-
+    @EnvironmentObject var userViewModel: UserViewModel
 
     @StateObject private var eventsViewModel = EventsViewModel()
     @StateObject private var homeViewModel = HomeViewModel()
@@ -20,21 +19,18 @@ struct HomeView: View {
 
     var body: some View {
         Group {
-            if isPlayerCreated {
-                mainContentView
-                    .onAppear {
-                        userViewModel.fetchUserData()
+                    if UserDefaults.standard.bool(forKey: "isCharacterCreated") {
+                        mainContentView
+                    } else {
+                        CreateUserView(isCharacterCreated: .constant(false))
                     }
-            } else {
-                CreateUserView(isCharacterCreated: $isPlayerCreated)
+                }
+                .onAppear {
+                    userViewModel.fetchUserData() // Isso carrega os dados do usuário quando a view aparece
+                    eventsViewModel.fetchAndHandleEventsJson()
+                    homeViewModel.loadYearRecords()
+                }
             }
-        }
-        .onAppear {
-            print("HomeView appeared")
-            eventsViewModel.fetchAndHandleEventsJson()
-            homeViewModel.loadYearRecords()
-        }
-    }
 
     var mainContentView: some View {
         NavigationView {
@@ -51,8 +47,10 @@ struct HomeView: View {
                     // Exibe os créditos disponíveis
                     Text("Name: \(userViewModel.userName)")
                         .font(.headline)
+
                     Text("Age: \(userViewModel.userAge)")
                         .font(.headline)
+
                     Text("Credits: \(creditsViewModel.credits)")
                         .font(.headline)
                         .padding()
@@ -120,5 +118,6 @@ struct HomeView_Previews: PreviewProvider {
             .environmentObject(AttributesViewModel())
             .environmentObject(SharedDataModel())
             .environmentObject(CreditsViewModel())
+            .environmentObject(UserViewModel())
     }
 }
