@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct SettingsView: View {
-    @EnvironmentObject var userViewModel: UserViewModel
-    @Binding var isCharacterCreated: Bool
+    @Environment(\.presentationMode) var presentationMode
+    @State private var showAlert = false
+    @State private var errorMessage: String? = nil
     var body: some View {
         NavigationView {
             List {
@@ -26,29 +28,45 @@ struct SettingsView: View {
                 }
 
                 Section {
-                            Button(action: {
-                                userViewModel.deleteUser { success in
-                                    if success {
-                                        // Redefine o estado de criação do personagem
-                                        isCharacterCreated = false
-                                        // Remove os dados do usuário salvos localmente
-                                        UserDefaults.standard.removeObject(forKey: "currentUserId")
-                                        UserDefaults.standard.removeObject(forKey: "currentUserData")
-                                        UserDefaults.standard.set(false, forKey: "isCharacterCreated")
-                                        // Aqui você pode adicionar uma navegação ou fechar a view atual, se necessário
-                                    }
-                                }
-                            }) {
-                                Text("Deletar Usuário")
-                                    .foregroundColor(.red)
-                            }
-                        }
+                    Button("Delete User", role: .destructive) {
+                        deleteUser()
+                    }
+                }
+                .alert("User Deleted", isPresented: $showAlert) {
+                    Button("OK", role: .cancel) {
+                        // Redireciona para a página de criação de personagem
+                        UserDefaults.standard.set(false, forKey: "isCharacterCreated")
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                } message: {
+                    Text(errorMessage ?? "Your user has been successfully deleted.")
+                }
             }
             .navigationTitle("Configurações")
+        }
+    }
+    private func deleteUser() {
+        guard let userId = UserDefaults.standard.string(forKey: "currentUserId") else {
+            errorMessage = "Error: User ID not found."
+            showAlert = true
+            return
+        }
+
+        let db = Firestore.firestore()
+        db.collection("users").document(userId).delete { error in
+            if let error = error {
+                errorMessage = "Error: \(error.localizedDescription)"
+            } else {
+                errorMessage = nil
+                UserDefaults.standard.removeObject(forKey: "currentUserId")
+                UserDefaults.standard.removeObject(forKey: "currentUserData")
+                UserDefaults.standard.set(false, forKey: "isCharacterCreated")
+            }
+            showAlert = true
         }
     }
 }
 
 #Preview {
-    SettingsView(isCharacterCreated: .constant(true))
+    CreateUserView(isCharacterCreated: .constant(true))
 }

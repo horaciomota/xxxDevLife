@@ -41,7 +41,7 @@ struct TabBarView: View {
             }
 
             NavigationView {
-                SettingsView(isCharacterCreated: .constant(true))
+                SettingsView()
             }
             .tabItem {
                 Label("Settings", systemImage: "gear")
