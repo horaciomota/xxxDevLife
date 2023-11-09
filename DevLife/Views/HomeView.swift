@@ -14,23 +14,23 @@ struct HomeView: View {
     @State private var isPlayerCreated = UserDefaults.standard.bool(forKey: "isCharacterCreated")
 
     @State private var userName: String = ""
-     @State private var userAge: Int = 0
-     @State private var userGender: String = ""
+    @State private var userAge: Int = 0
+    @State private var userGender: String = ""
 
     var body: some View {
         Group {
-                    if UserDefaults.standard.bool(forKey: "isCharacterCreated") {
-                        mainContentView
-                    } else {
-                        CreateUserView(isCharacterCreated: .constant(false))
-                    }
-                }
-                .onAppear {
-                    userViewModel.fetchUserData() // Isso carrega os dados do usuário quando a view aparece
-                    eventsViewModel.fetchAndHandleEventsJson()
-                    homeViewModel.loadYearRecords()
-                }
+            if UserDefaults.standard.bool(forKey: "isCharacterCreated") {
+                mainContentView
+            } else {
+                CreateUserView(isCharacterCreated: .constant(false))
             }
+        }
+        .onAppear {
+            userViewModel.fetchUserData() // Isso carrega os dados do usuário quando a view aparece
+            eventsViewModel.fetchAndHandleEventsJson()
+            homeViewModel.loadYearRecords()
+        }
+    }
 
     var mainContentView: some View {
         NavigationView {
@@ -65,34 +65,20 @@ struct HomeView: View {
                         }
                     }
 
-                    // Exibe os registros do ano
-                    if !homeViewModel.yearRecords.isEmpty {
-                        ForEach(homeViewModel.yearRecords) { yearRecord in
-                            Text("Year: \(yearRecord.year)")
+                    // Adicione esta seção para exibir as decisões
+                    if !userViewModel.decisions.isEmpty {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("Your Decisions").font(.title)
+                            ForEach(userViewModel.decisions) { decision in
+                                VStack(alignment: .leading) {
+                                    Text(decision.title).font(.headline)
+                                    Text(decision.details).font(.subheadline)
+                                    Text("Date: \(decision.date.formatted())").font(.caption)
+                                }
+                            }
                         }
                     } else {
-                        Text("No year records found")
-                    }
-
-                    // Exibe os eventos
-                    List(eventsViewModel.events) { event in
-                        Button(action: {
-                            if creditsViewModel.credits > 0 {
-                                attributesViewModel.applyEventConsequences(event.consequences)
-                                creditsViewModel.credits -= 1
-                                print("Event selected: \(event.title)")
-                            } else {
-                                // Feedback para o usuário
-                                print("Not enough credits to select this event")
-                            }
-                        }) {
-                            VStack(alignment: .leading) {
-                                Text(event.title)
-                                    .font(.headline)
-                                Text(event.description)
-                                    .font(.subheadline)
-                            }
-                        }
+                        Text("No decisions found")
                     }
                 }
                 .padding()
