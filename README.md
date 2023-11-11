@@ -1,4 +1,4 @@
-# DevLife
+# DevLife - Discontinued 
 
 Welcome to DevLife, an immersive simulation game for iOS that lets you create and manage your virtual developer character. Navigate through the ups and downs of a developer's life, enhance your skills, balance work and personal life, and make crucial decisions that will shape your career.
 
